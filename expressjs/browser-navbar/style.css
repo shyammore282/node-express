@@ -1,0 +1,26 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 35px;
+}
+.title-logo {
+  display: flex;
+  gap: 0px 10px;
+  align-items: center;
+}
+.title-logo .text {
+  color: skyblue;
+  font-size: 30px;
+  text-align: center;
+}
+.link {
+  display: flex;
+  gap: 20px;
+}
+.link li {
+  list-style-type: none;
+}
+.link li a {
+  text-decoration: none;
+}
