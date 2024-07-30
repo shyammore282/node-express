@@ -52,17 +52,19 @@
 
 // start();
 
-const { writeFileSync } = require("fs");
-const { createReadStream } = require("fs");
+const http = require("http");
+const fs = require("fs");
 
-for (let i = 0; i < 1000; i++) {
-  writeFileSync("./modules/textfolder/big.txt", `hello world ${i}\n`, {
-    flag: "a",
-  });
-}
+const server = http.createServer((req, res) => {
+  if (req.url === "/") {
+    res.end("home");
+  } else if (req.url === "/api") {
+    fs.readFile(`${__dirname}/userAPI/userAPI.json`, "utf8", (error, data) => {
+      res.end(data);
+    });
+  } else res.end("hello");
+});
 
-const stream = createReadStream("./modules/textfolder/big.txt", "utf8");
-
-stream.on("data", (result) => {
-  console.log(result);
+server.listen(5000, () => {
+  console.log("server listenong at localhost:5000");
 });
